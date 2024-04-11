@@ -1,0 +1,70 @@
+### GET TEST REQUEST => Works
+GET  http://localhost:5000
+###
+http://localhost:5000/getAll/reviews
+###
+http://localhost:5000/search/users/2
+###
+http://localhost:5000/search/movies/27
+###
+http://localhost:5000/searchMovies/29
+###
+http://localhost:5000/getAllMovies
+
+### POST TEST REQUEST
+POST http://localhost:5000/insert/Users
+Content-Type: application/json
+
+{
+    "username": "testing3",
+    "email": "test@mail3",
+    "password_hash": "newpass123",
+    "first_name": null,
+    "last_name": null,
+    "birthdate": null,
+    "profile_picture": null,
+    "bio": null,
+    "country": null
+}
+
+
+###
+POST http://localhost:5000/reviews
+Content-Type: application/json
+
+{
+    "user_id": "testing",
+    "movie_id": "test@mail",
+    "rating": "newpass123",
+    "comment": "review"
+}
+
+###
+PATCH http://localhost:5000/update/users/41
+Content-Type: application/json
+
+{
+    "username": "testing",
+    "email": "test@mail",
+    "password_hash": "newpass123",
+    "first_name": null,
+    "last_name": null,
+    "birthdate": null,
+    "profile_picture": null,
+    "bio": null,
+    "country": null
+}
+###
+PATCH  http://localhost:5000/update/reviews/1
+Content-Type: application/json
+
+{"rating": "7","comment": "Great Movie!","id": "1"}
+###
+PATCH  http://localhost:5000/update/recommendations/1
+Content-Type: application/json
+
+{"recommendation_type": "Action!", "id": "1"}
+
+### Delete => Works
+DELETE http://localhost:5000/delete/users/35
+Content-Type: application/json
