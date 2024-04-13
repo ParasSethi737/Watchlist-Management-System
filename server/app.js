@@ -14,11 +14,6 @@ app.use(express.urlencoded({ extended: false }));
 
 const db = new dbService();
 
-/* app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ error: error });
-}); */
-
 app.get('/', (req, res) => {
     res.send('Welcome to the server!');
 });
@@ -60,6 +55,7 @@ app.get('/getAllMovies', async (req, res) => {
 app.post('/insert/users', async (req, res) => {
     const userData = req.body;
     try {
+        console.log(userData);
         const result = await db.insertUsersData(userData);
         res.json({ success: result });
     } catch (error) {
@@ -105,6 +101,18 @@ app.post('/insert/movies', async (req, res) => {
     const moviesData = req.body;
     try {
         const result = await db.insertMoviesData(moviesData);
+        res.json({ success: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error });
+    }
+});
+
+app.post('/login', async (req, res) => {
+    const loginData = req.body;
+    console.log(loginData);
+    try {
+        const result = await db.login(loginData);
         res.json({ success: result });
     } catch (error) {
         console.error(error);

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Validation Sign Up form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="main">
+        <div class="left-section">
+        <h1>Watchlist Management System</h1>
+        </div>
+    <div class="right-section">
+        <div class="signup">
+            <form id="signupForm">
+                <label class="header">Sign up</label>
+                <input type="text" id="name" name="name" placeholder="Username" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="password" id="Password" name="password" placeholder="Password" required>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name">
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+                <input type="date" id="birthdate" name="birthdate" placeholder="Birthdate">
+                <input type="file" id="profilePicture" name="profilePicture" placeholder="Profile Picture">
+                <textarea id="bio" name="bio" rows="4" placeholder="Bio"></textarea>
+                <input type="text" id="country" name="country" placeholder="Country">
+                <label for="chk" class="switch-label">
+                    Already have an account? Login
+                    <input type="checkbox" id="chk" aria-hidden="true">
+                </label>
+                <button type="submit" id="signupBtn">Sign Up</button>
+            </form>
+        </div>
+        <div class="login">
+            <form id="loginForm">
+                <label class="header">Login</label>
+                <input type="text" id="username" name="name" placeholder="Username" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <label for="chk" class="switch-label">
+                    Don't have an account? Sign Up Now
+                    <input type="checkbox" id="chk" aria-hidden="true">
+                </label>
+                <button type="submit" id="loginBtn">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

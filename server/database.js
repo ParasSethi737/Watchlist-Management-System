@@ -1,6 +1,6 @@
 const mysql = require('mysql2/promise');
 const dotenv = require('dotenv');
-
+//names must be the same as in the database
 dotenv.config();
 
 class DbService {
@@ -64,6 +64,12 @@ class DbService {
         return result.affectedRows === 1;
     }
     
+    async login(loginData) {
+        const { username, password_hash } = loginData;
+        const query = `SELECT * FROM Users WHERE username = ? AND password_hash = ?;`;
+        const [result] = await this.pool.execute(query, [username, password_hash]);
+        return result;
+    }
     
     /* async updateDataById(table, id, updatedData) {
         const setClause = Object.entries(updatedData).map(([key, value]) => `${key} = ${typeof value === 'string' ? `'${value}'` : value}`).join(',');
