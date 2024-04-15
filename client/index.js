@@ -220,7 +220,6 @@ function handleInsertRow(tableName) {
             break; 
             case 'movies':
                 newData = {
-                    movie_id: document.querySelector('#movie-id-input').value.trim() || null,
                     title: document.querySelector('#title-input').value.trim() || null,
                     genres: document.querySelector('#genres-input').value.trim() || null,
                     release_date: document.querySelector('#release-date-input').value.trim() || null,
@@ -241,7 +240,9 @@ function handleInsertRow(tableName) {
             console.error('Invalid table name');
             return;
     }
-    fetch(`http://localhost:5000/insert/${tableName}`, {
+    let fetchUrl = `http://localhost:5000/insert/${tableName}`;
+    if (tableName === 'movies') {fetchUrl = `http://localhost:5000/insertmovies`;}
+    fetch(fetchUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -261,7 +262,9 @@ function handleInsertRow(tableName) {
         }console.log(data);
     })
     .catch(error => {
-        alert(error); 
+        alert(error);
+        console.log(data);
+        console.log(newData);
         console.error('Error inserting data:', error);
     });
 }
@@ -442,7 +445,9 @@ function handleSubmit(tableName) {
             return;
     }
 
-    fetch(`http://localhost:5000/update/${tableName}/${id}`, {
+    let fetchUrl = `http://localhost:5000/update/${tableName}/${id}`;
+    if (tableName === 'movies') {fetchUrl = `http://localhost:5000/updateMovies/${id}`;}
+    fetch(fetchUrl, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'

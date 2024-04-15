@@ -97,12 +97,14 @@ app.post('/insert/watchlist', async (req, res) => {
     }
 });
 //temp
-app.post('/insert/movies', async (req, res) => {
+app.post('/insertMovies', async (req, res) => {
     const moviesData = req.body;
     try {
         const result = await db.insertMoviesData(moviesData);
+        console.log(result);
         res.json({ success: result });
     } catch (error) {
+        console.log(error);
         console.error(error);
         res.status(500).json({ error: error });
     }
@@ -180,13 +182,15 @@ app.patch('/update/watchlist/:id', async (req, res) => {
     }
 });
 //temp
-app.patch('/update/movies/:id', async (req, res) => {
+app.patch('/updateMovies/:id', async (req, res) => {
     const { id } = req.params;
     const updatedMoviesData = req.body;
     try {
         const result = await db.updateMoviesData(id, updatedMoviesData);
+        console.log(result);
         res.json({ success: result });
     } catch (error) {
+        console.log(error);
         console.error(error);
         res.status(500).json({ error: error });
     }

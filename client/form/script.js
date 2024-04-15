@@ -1,10 +1,11 @@
-const form = document.getElementById('signupForm');
-form.addEventListener('submit', function(event) {
+document.addEventListener('DOMContentLoaded', function() {
+const signupForm = document.getElementById('signupForm');
+signupForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    var username = form.elements.name.value;
-    var email = form.elements.email.value;
-    var password = form.elements.password.value;
-    var confirmPassword = form.elements.confirmPassword.value;
+    var username = signupForm.elements.name.value;
+    var email = signupForm.elements.email.value;
+    var password = signupForm.elements.password.value;
+    var confirmPassword = signupForm.elements.confirmPassword.value;
     if (!username || !email || !password || !confirmPassword) {
         alert('Please fill out all mandatory fields!');
     } else if (password.length < 8 || password.length > 20) {
@@ -14,8 +15,7 @@ form.addEventListener('submit', function(event) {
     }else if(username.length >18){
         alert('Username must be less than 18 character long!');
     } else {
-        alert('Registered successfully!');
-        form.submit();
+        signupForm.submit();
     }
 });
 
@@ -62,12 +62,10 @@ function handleInsertRow(tableName) {
     })
     .then(data => {
         if (data.success) {
-            fetchAllData();
-            alert(`Registered Successfully!`);
+        alert('Registered successfully!');
         }console.log(data);
     })
     .catch(error => {
-        alert(error); 
         console.error('Error inserting data:', error);
     });
 }
@@ -76,35 +74,42 @@ function handleInsertRow(tableName) {
 const loginbtn = document.getElementById('loginBtn');
 loginbtn.addEventListener('click', verifyUser);
 function verifyUser() {
-    loginData = {
-        username: document.querySelector('#username').value.trim(),
-        password_hash: document.querySelector('#password').value.trim()
-    };
-    fetch('http://localhost:5000/login', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(loginData)
-    })
-    .then(response => {
-        if (!response.ok) {
-            console.log(response);
-            console.log(loginData);
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.success) {
-            alert('Login Successful!');
-            window.location.href = '../index.html';
-        } else {
-            alert('Login failed!');
-        }
-    })
-    .catch(error => {
-        alert(error); 
-        console.error('Error logging in:', error);
-    });
+    const username = document.querySelector('#username').value.trim();
+    const password = document.querySelector('#password').value.trim();
+    if (!username || !password) {
+        alert('Please fill out all mandatory fields!');
+        return;
+    } else {
+        loginData = {
+            username: username,
+            password_hash: password
+        };
+        fetch('http://localhost:5000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                console.log(response);
+                console.log(loginData);
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                alert('Login successful!');
+                window.location.href = '../index.html';
+            } else {
+                alert('Login failed!');
+            }
+        })
+        .catch(error => {
+            console.error('Error logging in:', error);
+        });
+    }
 }
+});
