@@ -270,13 +270,16 @@ function handleInsertRow(tableName) {
 }
 
 function deleteRowById(tableName, id) {
-    fetch(`http://localhost:5000/delete/${tableName}/${id}`, {
+    let fetchUrl = `http://localhost:5000/delete/${tableName}/${id}`;
+    if (tableName === 'movies') {fetchUrl = `http://localhost:5000/deletemovies/${id}`;}
+    fetch(fetchUrl, {
         method: 'DELETE'
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
             fetchAllData(); 
+            alert(`Data Successfully Deleted at ID:${id} in ${tableName}`);
         }
     });
 }

@@ -288,12 +288,52 @@ class DbService {
 }
 
     
-    
     async deleteDataById(table, id) {
         const query = `DELETE FROM ${table} WHERE id = ?;`;
         const [result] = await this.pool.execute(query, [id]);
         return result.affectedRows === 1;
     }
+
+    async deleteMoviesData(movieId) {
+        try {
+            // Delete data from the junction tables first
+            const deleteGenresQuery = `
+                DELETE FROM Movie_Genres
+                WHERE movie_id = ?;
+            `;
+            await this.pool.execute(deleteGenresQuery, [movieId]);
+    
+            const deleteOriginalLanguagesQuery = `
+                DELETE FROM Movie_OriginalLanguages
+                WHERE movie_id = ?;
+            `;
+            await this.pool.execute(deleteOriginalLanguagesQuery, [movieId]);
+    
+            const deleteProductionCompaniesQuery = `
+                DELETE FROM Movie_ProductionCompanies
+                WHERE movie_id = ?;
+            `;
+            await this.pool.execute(deleteProductionCompaniesQuery, [movieId]);
+    
+            // Now delete the movie from the Movies table
+            const deleteMovieQuery = `
+                DELETE FROM Movies
+                WHERE id = ?;
+            `;
+            const [deleteMovieResult] = await this.pool.execute(deleteMovieQuery, [movieId]);
+    
+            // Check if the delete operation was successful
+            if (deleteMovieResult.affectedRows === 1) {
+                return true; // Movie data deleted successfully
+            } else {
+                return false; // Movie data deletion failed
+            }
+        } catch (error) {
+            console.error("Error deleting movie data:", error);
+            return false; // Movie data deletion failed due to an error
+        }
+    }
+       
 
     async searchById(table, id) {
         const query = `SELECT * FROM ${table} WHERE id = ?;`;

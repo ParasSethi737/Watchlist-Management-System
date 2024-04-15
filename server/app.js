@@ -207,6 +207,17 @@ app.delete('/delete/:table/:id', async (req, res) => {
     }
 });
 
+app.delete('/deleteMovies/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await db.deleteMoviesData(id);
+        res.json({ success: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error });
+    }
+});
+
 app.get('/search/:table/:id', async (req, res) => {
     const { table, id } = req.params;
     try {
