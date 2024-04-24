@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Codystar:wght@300;400&family=Tilt+Prism&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Codystar:wght@300;400&family=Neonderthaw&family=Tilt+Prism&display=swap');
+
+:root {
+    --brand-primary: #44D688;
+    --font-family-display: Monoton, Arial, sans-serif;
+    --font-family-primary: 'Rubik', Arial, sans-serif;
+    --neon-effect: 0 0 0 transparent,
+      0 0 20px rgb(255, 0, 0),
+      0 0 50px rgba(255, 0, 0,1),
+      0 0 200px rgba(255, 0, 0, 1),
+      0 0 250px rgba(255, 0, 0, 1),
+      0 0 300px rgba(255, 0, 0, 1),
+      0 0 300px rgba(255, 0, 0, 1);
+      --neon-text-color: #f40;
+      --neon-border-color: #08f; 
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    background-color: #000000;
+    font-family: var(--font-family-primary);
+    line-height: 1.42;
+  }
+  
+  .hero {
+    background-color: #000000;
+    /*background: radial-gradient(ellipse at 33% 0%, #032756 0%, #110935 66%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: radial-gradient(ellipse at 33% 0%, #333 0%, #000 66%);
+  }
+  
+  .hero-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 500px;
+  }
+  
+  .hero-block {
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .hero-title {
+    animation: neon-blink 5s infinite alternate;
+    /*background-image: linear-gradient(transparent 0%, transparent 50%, #000 53%, transparent 56%, transparent 100%);
+    background-repeat: repeat-y;
+    background-position: 0 100%;
+    background-size: 82% 50%;*/
+    color: #FF8888;
+    font-family: var(--font-family-display);
+    font-size: 45px;
+    font-weight: normal;
+    margin: 0 auto;
+    margin-left: 2em;
+    text-align: left;
+    text-shadow: var(--neon-effect);
+    text-transform: uppercase;
+    transform: skew(0, -12deg) rotateZ(5deg);
+    white-space: nowrap;
+  }
+  
+  @media (min-width: 992px) {
+    .hero-title {
+      font-size: 86px;
+      margin-bottom: 100px;
+      margin-left: 1.5em;
+    }
+  }
+  
+  .hero-title strong {
+    display: block;
+    font-weight: normal;
+    text-indent: -1.66em;
+  }
+  
+  .button--primary {
+    background-color: var(--brand-primary);
+    border-color: transparent;
+    color: #000;
+    font-family: var(--font-family-primary);
+    font-weight: bold;
+    padding: 20px 30px;
+    transition: transform .2s;
+  }
+  
+  .button--primary:active {
+    outline: 0;
+    transform: scale(.95);
+  }
+
+  @keyframes neon-blink {
+    44% {
+      opacity: 1;
+    }
+    
+    45% {
+      opacity: .7;
+    }
+    
+    46% {
+      opacity: 1;
+    }
+    
+    98% {
+      opacity: 1;
+    }
+    
+    99% {
+      opacity: .5;
+    }
+    
+    100% {
+      opacity: 1;
+    }
+  }
+
+.navbar{
+    position: sticky;
+}
+.navbar-nav .nav-link {
+  font-size: 20px;
+  margin-right: 20px; 
+}
+.navbar-nav .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Highlight color on hover */
+  border-radius: 5px; /* Rounded corners on hover */
+}
+.container {
+  background-color: #000;
+}
+
+p{
+  color: #fff;
+}
+
+.user-links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center; 
+  height: 175px; 
+  width: 100%;
+  padding: 0 40px; 
+  margin: 25px 0; 
+  margin-top: 0;
+  background-color: #000000;
+}
+
+.neon-block {
+  width: 300px; 
+  height: 75px; 
+}
+
+.neonText {
+  font-family: "Neonderthaw", cursive;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 3px solid #08f; 
+  border-radius: 10px;
+  padding: 15px; 
+  color: #ff007b;
+  font-weight: bold; 
+  text-shadow: 0 0 20px rgb(255, 16, 240),
+  0 0 25px rgba(255, 16, 240,1),
+  0 0 75px rgba(255, 16, 240, 1),
+  0 0 100px rgba(255, 16, 240, 1),
+  0 0 150px rgba(31, 81, 255, 1);
+  box-shadow: 0 0 20px rgb(31, 81, 255),
+  0 0 50px rgba(31, 81, 255,1),
+  0 0 200px rgba(31, 81, 255, .5),
+  0 0 20px rgba(31, 81, 255, 1);
+}
+
+.neonText:hover {
+  background-color: #b3b2b2;
+  transform: scale(1.05);
+}
+
+/* Adjusted styles for table with a black background */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th,
+table td {
+  padding: 8px;
+  border: 1px solid #fff; /* Adjust border color */
+  text-align: left;
+  color: #fff; /* Adjust text color */
+}
+
+table th {
+  background-color: #333; /* Adjust header background color */
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #444; /* Adjust even row background color */
+}
+
+table tbody tr:hover {
+  background-color: #555; /* Adjust hover background color */
+}
+
+.table-wrapper {
+  max-height: 725px;
+  overflow-y: auto;
+  margin: 15px;
+}
+
+
+thead{
+  background-color: #1a1a1a;
+  color: #fff;
+
+}
+
+.footer{
+  text-align: center;
+  background-color: #1a1a1a;
+}
+[id*="form"]{
+  margin: 10px;
+  padding: 10px;
+  background-color: #292929;
+  border-radius: 7px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px;
+  background-color: #8b2d39;
+  border-radius: 7px;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background-color: #95294d;
+}
+
+h2{
+  font-size: 36px;
+  text-align: center;
+  color: #fff;
+  font-family: "TiltPrism";
+  text-shadow: 0 0 10px rgb(255, 255, 255),
+  0 0 10px rgba(255, 255, 255, 1);
+}

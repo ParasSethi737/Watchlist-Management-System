@@ -1,0 +1,636 @@
+:root {
+    --brand-primary: #44D688;
+    --font-family-display: Monoton, Arial, sans-serif;
+    --font-family-primary: 'Rubik', Arial, sans-serif;
+    --neon-effect: 0 0 0 transparent,
+      0 0 20px rgb(255, 0, 0),
+      0 0 50px rgba(255, 0, 0,.5),
+      0 0 200px rgba(255, 0, 0, .5),
+      0 0 250px rgba(255, 0, 0, 1),
+      0 0 300px rgba(255, 0, 0, 1),
+      -250px -100px 100px rgba(255, 0, 0, 1)
+    ; 
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    background-color: #000000;
+    font-family: var(--font-family-primary);
+    line-height: 1.42;
+  }
+  
+  .hero {
+    background-color: #000000;
+    /*background: radial-gradient(ellipse at 33% 0%, #032756 0%, #110935 66%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: radial-gradient(ellipse at 33% 0%, #333 0%, #000 66%);
+  }
+  
+  .hero-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 400px;
+  }
+  
+  .hero-block {
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .hero-title {
+    animation: neon-blink 5s infinite alternate;
+    /*background-image: linear-gradient(transparent 0%, transparent 50%, #000 53%, transparent 56%, transparent 100%);
+    background-repeat: repeat-y;
+    background-position: 0 100%;
+    background-size: 82% 50%;*/
+    color: #FF8888;
+    font-family: var(--font-family-display);
+    font-size: 45px;
+    font-weight: normal;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    margin-left: 2em;
+    text-align: left;
+    text-shadow: var(--neon-effect);
+    text-transform: uppercase;
+    transform: skew(0, -12deg) rotateZ(5deg);
+    white-space: nowrap;
+  }
+  
+  @media (min-width: 992px) {
+    .hero-title {
+      font-size: 86px;
+      margin-bottom: 100px;
+      margin-left: 1.5em;
+    }
+  }
+  
+  .hero-title strong {
+    display: block;
+    font-weight: normal;
+    text-indent: -1.66em;
+  }
+  
+  .button--primary {
+    background-color: var(--brand-primary);
+    border-color: transparent;
+    color: #000;
+    font-family: var(--font-family-primary);
+    font-weight: bold;
+    padding: 20px 30px;
+    transition: transform .2s;
+  }
+  
+  .button--primary:active {
+    outline: 0;
+    transform: scale(.95);
+  }
+  
+  .gallery {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .gallery-item {
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card-block {
+    padding: 20px;
+  }
+  
+  .card-block > *:last-child {
+    margin-bottom: 0;
+  }
+  
+  .card-block--primary,
+  .card-block--secondary {
+    background-color: rgba(51, 51, 51, .4);
+  }
+  
+  .card-block--primary {
+    flex: 1;
+  }
+  
+  .card-block--secondary {
+    align-items: center;
+    display: flex;
+    min-width: 100%;
+  }
+  
+  .card-block--secondary .button {
+    min-width: 100%;
+  }
+  
+  @media (min-width: 992px) {
+    .card-block--secondary,
+    .card-block--secondary .button {
+      min-width: unset;
+    }
+  }
+  
+  .card-element--date {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    font-family: var(--font-family-primary);
+    line-height: 1.3;
+    min-width: 75px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .card-element-text--highlight {
+    font-size: 32px;
+  }
+  
+  .card-element-text {
+    font-size: 16px;
+  }
+  
+  .card-title,
+  .card-subtitle {
+    text-align: left;
+  }
+  
+  .card-title {
+    color: #ffffff;
+    font-family: var(--font-family-primary);
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 1.3em;
+  }
+  
+  .card-subtitle {
+    color: #aaa;
+  }
+  
+  .card-title + .card-subtitle {
+    margin-top: -.6em;
+  }
+  
+  @keyframes neon-blink {
+    44% {
+      opacity: 1;
+    }
+    
+    45% {
+      opacity: .7;
+    }
+    
+    46% {
+      opacity: 1;
+    }
+    
+    98% {
+      opacity: 1;
+    }
+    
+    99% {
+      opacity: .5;
+    }
+    
+    100% {
+      opacity: 1;
+    }
+  }
+
+/*for ring animation*/
+.container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ring {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border: 4px solid transparent;
+    border-top: 4px solid #24ecff55;
+    border-radius: 50%;
+    margin: -30px;
+    filter: drop-shadow(0 0 10px #24ecff) drop-shadow(0 0 30px #24ecff)
+      drop-shadow(0 0 50px #24ecff);
+    animation: animate 4s linear infinite;
+  }
+  
+  @keyframes animate {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .ring::before {
+    content: "\f135";
+    position: absolute;
+    top: 10px;
+    right: -4px;
+    rotate: 90deg;
+    font-family: fontAwesome;
+    color: #24ecff;
+    font-size: 2em;
+  }
+  
+  .ring:nth-child(2) {
+    border: 4px solid transparent;
+    border-left: 4px solid #93ff2d;
+    filter: drop-shadow(0 0 10px #93ff2d) drop-shadow(0 0 30px #93ff2d)
+      drop-shadow(0 0 50px #93ff2d);
+    animation: animate2 4s linear infinite;
+    animation-delay: -1s;
+  }
+  
+  .ring:nth-child(2)::before {
+    content: "\f072";
+    top: initial;
+    bottom: -6px;
+    left: 12px;
+    right: initial;
+    rotate: 45deg;
+    color: #93ff2d;
+  }
+  
+  @keyframes animate2 {
+    0% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  .ring:nth-child(3) {
+    position: absolute;
+    top: -66.66px;
+    border: 4px solid transparent;
+    border-left: 4px solid #ff1d6c55;
+    filter: drop-shadow(0 0 10px #ff1d6c) drop-shadow(0 0 30px #ff1d6c)
+      drop-shadow(0 0 50px #ff1d6c);
+    animation: animate2 4s linear infinite;
+    animation-delay: -3s;
+  }
+  
+  .ring:nth-child(3)::before {
+    content: "\e518";
+    rotate: 135deg;
+    top: initial;
+    right: initial;
+    bottom: -6px;
+    left: 12px;
+    color: #ff1d6c;
+  }
+/*end of ring animation*/
+/*for the luminaire animation*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  html {
+    background: radial-gradient(#222, #000);
+    background-attachment: fixed;
+  }
+
+.luminaire {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 50px;
+    border-radius: 50%;
+    background-color: #000;
+    box-shadow: 0 0 40px 20px #fff, 0 0 100px 50px #0ff;
+    transition: box-shadow 4s ease-out;
+    animation: spin 16s linear infinite;
+  }
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .luminaire:hover {
+    cursor: pointer;
+  }
+  
+  .luminaire::before, .luminaire::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 40px 20px #fff, 0 0 100px 50px #ff0;
+    opacity: 0;
+    transition: opacity 8s, transform 8s;
+  }
+  
+  .on {
+    background-color: #fff;
+    box-shadow: 0 0 80px 40px #fff, 0 0 200px 100px #f0f;
+  }
+  
+  .on::before {
+    transform: translateX(-100px);
+    opacity: 1;
+  }
+  
+  .on::after {
+    transform: translateX(100px);
+    opacity: 1;
+  }
+/*end of luminaire animation*/
+/*for the glowing circle animation*/
+.glowing-circle {
+    /* position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px); */
+    margin: 50px; /* can remove */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow:
+      0 0 60px 30px #fff,
+      0 0 100px 60px #f0f,
+      0 0 140px 90px #0ff;
+  }
+/*end of glowing circle animation*/
+/* colourful glowing circle */
+.colorful-glowing-circle {
+    /* position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px); */
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    box-shadow:
+      inset 0 0 50px #fff,
+      inset 20px 0 80px #f0f,
+      inset -20px 0 80px #0ff,
+      inset 20px 0 300px #f0f,
+      inset -20px 0 300px #0ff,
+      0 0 50px #fff,
+      -10px 0 80px #f0f,
+      10px 0 80px #0ff;
+  }
+/*end of colourful glowing circle*/
+/*for the reveal text animation*/
+
+.containers {
+    width: 9.25em;
+    height: 1.15em;
+    font-size: 4rem;
+    font-family: sans-serif;
+    position: relative;
+  }
+  
+  .containers div {
+    position: absolute;
+    left: 0;
+    text-transform: uppercase;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+  
+  .upper {
+    top: 0;
+    height: 52.5%;
+    color: #fff;
+    overflow: hidden;
+    z-index: 3;
+    animation: moveUp 1.5s ease-in-out 1;
+    background-color: #121212;
+  }
+  
+  .lower {
+    bottom: 0;
+    height: 100%;
+    background: linear-gradient(180deg, #121212 52.5%, #fff 52.5%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    z-index: 1;
+    animation: moveDown 1.5s ease-in-out 1;
+  }
+  
+  .inside {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-40%);
+    text-align: center;
+    z-index: 2;
+    font-size: 1rem;
+    color: #dc143c;
+  }
+  
+  @keyframes moveUp {
+    0%,
+    100% {
+      top: 0;
+    }
+  
+    50%,
+    70% {
+      top: -45px;
+    }
+  }
+  
+  @keyframes moveDown {
+    0%,
+    100% {
+      top: 0;
+    }
+  
+    50%,
+    70% {
+      top: 30px;
+    }
+  }
+  
+   @media (max-width: 424px) {
+    .container {
+      font-size: 2.5rem;
+    }
+  
+    .inside {
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .container {
+      font-size: 2rem;
+    }
+  
+    .inside {
+      font-size: 0.5rem;
+    }
+  } 
+/*end of reveal text animation*/
+/*for the navbar animation*/
+
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	background-color: #9387ab;
+	font: 400 10px "Lato", sans-serif;
+	text-align: center;
+}
+
+.header {
+	width: 100%;
+	height: 75px;
+	background: #17141d;
+	opacity: 0.95;
+	overflow: hidden;
+	-webkit-box-shadow: #333 1px 3px 4px;
+	-moz-box-shadow: #333 1px 3px 4px;
+	box-shadow: #333 1px 3px 4px;
+}
+
+.content {
+	width: 100%;
+	height: calc(100% - 75px);
+	background-image: url(https://picsum.photos/1000/700);
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: #9387ab;
+}
+h1 {
+	letter-spacing: 4px;
+	padding: 1em;
+	color: white;
+	background-color: #17141d;
+	opacity: 0.8;
+}
+
+svg.line-top {
+	width: 100%;
+	background-color: #17141d;
+}
+svg.line-bottom {
+	width: 100%;
+}
+.menu {
+	width: 750px;
+	margin: 0 auto;
+}
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+ul li {
+	margin: 0;
+	padding: 10px 0 10px 0;
+	width: 25%;
+	height: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+	display: inline-block;
+	letter-spacing: 3.5px;
+	transition: all 0.5s ease-out;
+}
+
+li.active {
+	color: orange;
+	transform: scale(1.1);
+}
+
+polygon {
+	stroke-width: 2px;
+	stroke: orange;
+	fill: orange;
+}
+
+@media (max-device-width: 991px) {
+	.header {
+		height: 64px;
+	}
+
+	body {
+		font-size: 0.4em;
+	}
+	.content {
+		height: calc(100% - 64px);
+	}
+}
+/*end of navbar animation*/
+/*for the background animation*/
+#canvas{
+  cursor: crosshair;
+  z-index: 2;
+  position: absolute;
+  top: 0; left: 0;
+}
+
+#overlay{
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.0) 10%, rgba(0,0,0,.8) 80%, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%);
+  z-index: 3;
+  position: absolute;
+  top:0;left:0;
+  height: 100%;
+  width: 100%;
+}
+
+#bg_glow{
+  z-index: 1;
+  position: absolute;
+  top:0;left:0;
+  height: 100%;
+  width: 100%;
+}
+
+#info{
+  z-index: 4;
+  position: absolute;
+  color: #fff;
+  top: 0px;
+  left: 0px;
+  background: rgba(60,60,60,.6);
+  padding: 5px;
+}
+#overlay:hover{
+  cursor: pointer;
+}
+
+#fps{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 5;
+}

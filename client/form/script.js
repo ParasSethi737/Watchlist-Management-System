@@ -102,7 +102,11 @@ function verifyUser() {
         .then(data => {
             if (data.success) {
                 alert('Login successful!');
-                window.location.href = '../index.html';
+                /* if (loginData.username === 'admin') {
+                    window.location.href = '../index.html';
+                } else { */
+                    window.location.href = '../user/home.html';
+                //}
             } else {
                 alert('Login failed!');
             }
